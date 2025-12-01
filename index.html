@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Ajuste fino para esconder a barra de rolagem nos destaques, mas manter a funcionalidade */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @keyframes pulse-audio {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .playing-active {
+            fill: rgba(59, 130, 246, 0.1);
+            /* Preenchimento leve */
+            animation: pulse-audio 2s infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex justify-center items-start py-0 sm:py-10 font-sans text-slate-900">
+
+    <audio id="audio-player" src="music/musica.mp3"></audio>
+
+    <main
+        class="w-full max-w-md bg-white min-h-screen sm:min-h-[800px] shadow-xl overflow-hidden sm:rounded-3xl border-x border-gray-200">
+
+        <header class="sticky top-0 bg-white z-10 border-b border-gray-100">
+            <div class="flex items-center justify-between px-4 py-3">
+                <div class="flex items-center gap-4">
+                    <i data-lucide="chevron-left" class="w-7 h-7 cursor-pointer"></i>
+                    <div class="font-bold text-lg"></div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i data-lucide="more-horizontal" class="w-6 h-6 cursor-pointer"></i>
+                </div>
+            </div>
+        </header>
+
+        <section class="px-4 pt-4 pb-2">
+            <div class="flex items-start">
+                <div class="shrink-0 mr-6">
+                    <div
+                        class="w-24 h-24 rounded-full bg-black flex items-center justify-center overflow-hidden border-2 border-gray-100 p-0.5 relative">
+                        <div
+                            class="w-full h-full rounded-full bg-black flex items-center justify-center text-white font-bold text-2xl tracking-tighter">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 flex flex-col justify-center py-2">
+                    <div class="flex items-center gap-2 mb-3">
+                        <h1 class="font-bold text-lg leading-tight">L. Moutinho</h1>
+                        <span class="text-sm text-gray-500 font-normal">ele/dele</span>
+                    </div>
+
+                    <div class="flex justify-between items-center pr-4">
+                        <div class="text-center">
+                            <span class="block font-bold text-lg">3</span>
+                            <span class="text-xs text-gray-500">Projetos</span>
+                        </div>
+                        <div class="text-center cursor-pointer hover:opacity-70 transition" onclick="openFollowers()">
+                            <span class="block font-bold text-lg">7</span>
+                            <span class="text-xs text-gray-500">Tecnologias</span>
+                        </div>
+                        <div class="text-center cursor-pointer">
+                            <span class="block font-bold text-lg">1</span>
+                            <span class="text-xs text-gray-500">seguindo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3 text-sm px-1">
+                <p class="text-gray-900 leading-tight">💻 | Desenvolvedor Full-Stack</p>
+                <p class="text-gray-900 leading-tight">📚 | Estudante de ADS e CETMob</p>
+
+                <div class="flex items-center gap-1 mt-1 text-blue-900 font-medium cursor-pointer">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                    <p>Porto Alegre, RS, Brasil</p>
+                </div>
+
+                <div id="play-btn"
+                    class="flex items-center gap-2 mt-2 text-sm cursor-pointer hover:bg-gray-50 p-1 rounded-md transition-colors select-none"
+                    onclick="toggleMusic()">
+
+                    <div class="relative w-5 h-5 flex items-center justify-center">
+                        <i id="icon-play" data-lucide="play-circle"
+                            class="w-5 h-5 text-gray-900 absolute transition-all"></i>
+
+                        <i id="icon-pause" data-lucide="pause-circle"
+                            class="w-5 h-5 text-blue-500 hidden absolute transition-all"></i>
+                    </div>
+
+                    <p id="music-text"><span class="font-semibold">Man Of The Year</span> • Dance Gavin Dance</p>
+                </div>
+            </div>
+
+            <div class="flex gap-2 mt-4">
+                <a href="https://www.linkedin.com/in/lucasmoutinho" target="_blank"
+                    class="bg-gray-200 text-black font-semibold text-sm rounded-lg py-1.5 px-4 grow hover:bg-gray-300 transition cursor-pointer text-center">
+                    Linkedin
+                </a>
+                <button
+                    class="bg-gray-200 text-black font-semibold text-sm rounded-lg py-1.5 px-4 grow hover:bg-gray-300 transition cursor-pointer text-center">
+                    Mensagem
+                </button>
+                <button
+                    class="bg-gray-200 text-black rounded-lg py-1.5 px-2 flex items-center justify-center hover:bg-gray-300 transition cursor-pointer shrink-0">
+                    <i data-lucide="user-plus" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </section>
+        <!--
+        <section class="mb-2 mt-2 border-b border-gray-100 pb-4">
+            <div class="flex gap-4 overflow-x-auto px-4 pt-2 hide-scrollbar">
+                <div class="flex flex-col items-center gap-1 shrink-0 cursor-pointer">
+                    <div class="w-16 h-16 rounded-full border-2 border-gray-300 p-0.5 flex items-center justify-center bg-white">
+                         <i data-lucide="plus" class="w-6 h-6 text-gray-700"></i>
+                    </div>
+                    <span class="text-xs">Novo</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 shrink-0 cursor-pointer">
+                    <div class="w-16 h-16 rounded-full border-2 border-gray-200 p-0.5">
+                        <div class="w-full h-full rounded-full bg-pink-200 flex items-center justify-center">
+                            <span class="text-2xl">🎵</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-medium">Playlist</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 shrink-0 cursor-pointer">
+                    <div class="w-16 h-16 rounded-full border-2 border-gray-200 p-0.5">
+                         <div class="w-full h-full rounded-full bg-yellow-200 flex items-center justify-center">
+                            <span class="text-2xl">🍸</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-medium">Eventos/Rolês</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 shrink-0 cursor-pointer">
+                    <div class="w-16 h-16 rounded-full border-2 border-gray-200 p-0.5">
+                        <div class="w-full h-full rounded-full bg-purple-200 flex items-center justify-center">
+                            <span class="text-2xl">🙀</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-medium">Acho Graça</span>
+                </div>
+            </div>
+        </section>
+-->
+        <div class="flex justify-around items-center h-12">
+            <button class="flex-1 flex justify-center items-center h-full border-b-2 border-black cursor-pointer">
+                <i data-lucide="grid-3x3" class="w-7 h-7 text-black"></i>
+            </button>
+            <button
+                class="flex-1 flex justify-center items-center h-full cursor-pointer text-gray-400 hover:text-gray-600 border-b-2 border-transparent hover:border-gray-200">
+                <i data-lucide="clapperboard" class="w-7 h-7"></i>
+            </button>
+            <button
+                class="flex-1 flex justify-center items-center h-full cursor-pointer text-gray-400 hover:text-gray-600 border-b-2 border-transparent hover:border-gray-200">
+                <i data-lucide="refresh-cw" class="w-6 h-6"></i>
+            </button>
+            <button
+                class="flex-1 flex justify-center items-center h-full cursor-pointer text-gray-400 hover:text-gray-600 border-b-2 border-transparent hover:border-gray-200">
+                <i data-lucide="user-square" class="w-7 h-7"></i>
+            </button>
+        </div>
+
+        <div class="grid grid-cols-3 gap-0.5 pb-20">
+
+            <div onclick="openModal(0)" class="aspect-square bg-gray-900 cursor-pointer relative group overflow-hidden">
+                <img src="https://placehold.co/400x400/1a1a1a/FFF?text=Proj+1"
+                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+            </div>
+
+            <div onclick="openModal(1)"
+                class="aspect-square bg-gray-900 cursor-pointer relative group overflow-hidden border border-gray-800">
+
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1740&auto=format&fit=crop"
+                    class="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition duration-500 ease-in-out">
+
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+
+                    <div
+                        class="w-12 h-12 rounded-full border-2 border-white/30 bg-black/50 backdrop-blur-sm flex items-center justify-center mb-2 group-hover:border-blue-400 transition-colors">
+                        <i data-lucide="settings"
+                            class="w-6 h-6 text-white group-hover:text-blue-400 transition-colors"></i>
+                    </div>
+
+                    <span
+                        class="text-white font-bold text-xs tracking-widest uppercase opacity-80 group-hover:opacity-100">
+                        Ger. de Acesso
+                    </span>
+                </div>
+
+            </div>
+
+            <div onclick="openModal(2)" class="aspect-square bg-gray-900 cursor-pointer relative group overflow-hidden">
+                <img src="https://placehold.co/400x400/1a1a1a/FFF?text=Proj+3"
+                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+            </div>
+
+        </div>
+
+
+
+        <div id="project-modal" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
+            <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+
+            <div class="relative z-10 flex items-center justify-center min-h-screen p-4 pointer-events-none">
+                <div
+                    class="bg-white w-full max-w-4xl h-[80vh] flex flex-col md:flex-row rounded-xl overflow-hidden shadow-2xl pointer-events-auto relative">
+
+                    <button onclick="closeModal()"
+                        class="absolute top-4 right-4 z-20 text-gray-800 md:text-white bg-white/20 hover:bg-white/40 rounded-full p-1 cursor-pointer">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+
+                    <div class="w-full md:w-[60%] bg-black flex items-center justify-center relative overflow-hidden">
+                        <img id="modal-img" src="" alt="Projeto" class="max-h-full max-w-full object-contain">
+                    </div>
+
+                    <div class="w-full md:w-[40%] flex flex-col bg-white">
+                        <div class="p-4 border-b border-gray-100 flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white text-[10px] font-bold">
+                            </div>
+                            <span class="font-bold text-sm">L. Moutinho</span>
+                            <span class="text-blue-500 text-xs font-semibold">• Seguir</span>
+                        </div>
+
+                        <div class="p-4 overflow-y-auto flex-1">
+                            <h2 id="modal-title" class="font-bold text-xl mb-2">Título do Projeto</h2>
+                            <p id="modal-desc" class="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
+                                Descrição do projeto vai aqui.
+                            </p>
+
+                            <div class="mt-6 flex flex-wrap gap-2">
+                                <div id="modal-tags" class="mt-6 flex flex-wrap gap-2">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 border-t border-gray-100 mt-auto bg-white">
+                            <div class="flex justify-between mb-2">
+                                <div class="flex gap-4">
+                                    <i data-lucide="heart" class="w-6 h-6 cursor-pointer hover:text-red-500"></i>
+                                    <i data-lucide="message-circle" class="w-6 h-6 cursor-pointer"></i>
+                                    <i data-lucide="send" class="w-6 h-6 cursor-pointer"></i>
+                                </div>
+                                <i data-lucide="bookmark" class="w-6 h-6 cursor-pointer"></i>
+                            </div>
+                            <div class="text-xs text-gray-400 uppercase">2 dias atrás</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="followers-modal" class="fixed inset-0 z-50 hidden" role="dialog">
+            <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" onclick="closeFollowers()">
+            </div>
+
+            <div class="relative z-10 flex items-center justify-center min-h-screen p-4 pointer-events-none">
+                <div
+                    class="bg-white w-full max-w-sm h-[400px] flex flex-col rounded-xl overflow-hidden shadow-2xl pointer-events-auto animate-fade-in">
+
+                    <div class="p-3 border-b border-gray-200 flex items-center justify-between bg-white sticky top-0">
+                        <div class="w-8"></div>
+                        <h2 class="font-bold text-base">Tecnologias</h2>
+                        <button onclick="closeFollowers()" class="w-8 cursor-pointer">
+                            <i data-lucide="x" class="w-6 h-6 text-gray-800"></i>
+                        </button>
+                    </div>
+
+                    <div class="overflow-y-auto flex-1 p-0">
+                        <ul id="skills-list" class="flex flex-col">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Inicializa ícones
+        lucide.createIcons();
+
+        // === LÓGICA DO PLAYER DE MÚSICA (Mantida) ===
+        var audio = document.getElementById("audio-player");
+        var iconPlay = document.getElementById("icon-play");
+        var iconPause = document.getElementById("icon-pause");
+        var isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                iconPause.classList.add("hidden");
+                iconPause.classList.remove("playing-active");
+                iconPlay.classList.remove("hidden");
+                isPlaying = false;
+            } else {
+                audio.play();
+                iconPlay.classList.add("hidden");
+                iconPause.classList.remove("hidden");
+                iconPause.classList.add("playing-active");
+                isPlaying = true;
+            }
+        }
+        audio.onended = function () { isPlaying = true; toggleMusic(); };
+
+
+        // === LÓGICA DO MODAL DE PROJETOS (Nova) ===
+
+        // 1. Dados dos seus Projetos (Edite aqui)
+        const projects = [
+            {
+                title: "",
+                image: "https://placehold.co/600x800/1a1a1a/FFF?text=Imagem+RPA", // Coloque o caminho da sua imagem aqui
+                description: "",
+                tags: [""]
+            },
+            {
+                title: "Controle de Acesso",
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1740&auto=format&fit=crop",
+                description: `Desenvolvi um Windows Service customizado para gerenciar a disponibilidade de usuários no ambiente DocuWare.
+                                O sistema opera com base em janelas temporais configuráveis: ele monitora, ativa e desativa usuários automaticamente conforme seus horários permitidos de trabalho. Isso garante que o acesso ao sistema ocorra apenas nos momentos autorizados, aumentando a segurança e o controle operacional.\n
+                                Tecnologia a favor da gestão eficiente. 👊`,
+                tags: ["C#", ".NET 8", "Windows Service", "DocuWare"]
+            },
+            {
+                title: "Exportador de PDF",
+                image: "https://placehold.co/600x800/333/FFF?text=Exportador+de+PDF",
+                description: `Nesse projeto, eu e @L.Volks trabalhamos colaborativamente no desenvolvimento de um sistema que agrega valor ao portólio de produtos da @mgs.
+                                Criamos uma aplicação capaz de extrair e converter documentos. O diferencial técnico da solução foi integrar a conversão para PDF/A e o reconhecimento de texto (OCR) no mesmo fluxo de exportação, os dados já prontos para importação em qualquer sistema moderno, acompanhados de seus respectivos metadados (CSV).
+                                `,
+                tags: ["C#", ".NET 8", "Windows Forms"]
+            }
+        ];
+
+        // Elementos do Modal
+        const modal = document.getElementById('project-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalTags = document.getElementById('modal-tags');
+
+        // Função para Abrir
+        function openModal(index) {
+            const project = projects[index];
+
+            // Popula os dados
+            modalImg.src = project.image;
+            modalTitle.innerText = project.title;
+            modalDesc.innerText = project.description;
+            modalTags.innerHTML = ''; // Limpa as tags do projeto anterior
+
+            project.tags.forEach(tag => {
+                // Cria o elemento <span> para cada tag
+                const span = document.createElement('span');
+                // Adiciona as classes do Tailwind (cinza, arredondado, pequeno)
+                span.className = "bg-gray-100 text-xs px-2 py-1 rounded font-medium text-gray-700";
+                span.innerText = tag;
+                // Coloca dentro da div
+                modalTags.appendChild(span);
+            });
+
+            // Mostra o modal
+            modal.classList.remove('hidden');
+
+            // Trava o scroll do fundo
+            document.body.style.overflow = 'hidden';
+
+            // Atualiza ícones dentro do modal (se tiver novos)
+            lucide.createIcons();
+        }
+
+        // Função para Fechar
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Destrava o scroll
+        }
+
+        // Fechar ao apertar ESC
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+        // === LÓGICA DO MODAL DE SEGUIDORES (SKILLS) ===
+
+        // Lista de Tecnologias (Edite aqui)
+        // Nível: 1 = Iniciante, 2 = Intermediário, 3 = Avançado
+        const skills = [
+            { name: "C# / .NET", level: 3, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
+            { name: "Java", level: 3, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+            { name: "HTML & CSS", level: 3, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+            { name: "MySQL", level: 3, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+            { name: "JavaScript", level: 2, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+            { name: "Python", level: 2, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { name: "Docker", level: 1, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+        ];
+
+        const followersModal = document.getElementById('followers-modal');
+        const skillsList = document.getElementById('skills-list');
+
+        function openFollowers() {
+            // Limpa a lista atual
+            skillsList.innerHTML = '';
+
+            skills.forEach(skill => {
+                // Cria o item da lista
+                const li = document.createElement('li');
+                li.className = "flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition border-b border-gray-50 last:border-0";
+
+                // Lógica das Barrinhas (Gera 3 divs)
+                let barsHtml = '';
+                for (let i = 1; i <= 3; i++) {
+                    // Se o nível da skill for maior ou igual a i, pinta de azul. Senão, cinza claro.
+                    const colorClass = i <= skill.level ? "bg-blue-500" : "bg-gray-200";
+                    barsHtml += `<div class="h-1.5 w-6 rounded-full ${colorClass}"></div>`;
+                }
+
+                // Texto do Nível
+                const levelText = ["", "Iniciante", "Intermediário", "Avançado"][skill.level];
+
+                li.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full border border-gray-200 p-1 bg-white shrink-0">
+                        <img src="${skill.icon}" class="w-full h-full object-contain rounded-full">
+                    </div>
+                    
+                    <div class="flex flex-col">
+                        <span class="font-semibold text-sm text-gray-900">${skill.name}</span>
+                        <span class="text-xs text-gray-500">${levelText}</span>
+                    </div>
+                </div>
+
+                <div class="flex gap-1">
+                    ${barsHtml}
+                </div>
+            `;
+                skillsList.appendChild(li);
+            });
+
+            followersModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons(); // Recarrega ícones se houver
+        }
+
+        function closeFollowers() {
+            followersModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+
+</html>

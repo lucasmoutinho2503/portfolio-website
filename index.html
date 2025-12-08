@@ -107,7 +107,7 @@
                         <p>Porto Alegre, RS, Brasil</p>
                     </div>
 
-                    <a href="https://open.spotify.com/" target="_blank" class="flex items-center gap-2 mt-2 text-sm cursor-pointer p-1 rounded-md transition-colors select-none text-decoration-none group">
+                    <a href="https://open.spotify.com/playlist/3bZ20h0qhZIwWGaVnzBh3H?si=df0b350bdfec4c57" target="_blank" class="flex items-center gap-2 mt-2 text-sm cursor-pointer p-1 rounded-md transition-colors select-none text-decoration-none group">
                         <div class="relative w-5 h-5 flex items-center justify-center">
                             <i data-lucide="play-circle" class="w-5 h-5 text-black-600 dark:text-black-500 group-hover:scale-110 transition-transform"></i>
                         </div>
@@ -225,31 +225,40 @@
             }
         }
         // --- DADOS ---
+        // 1. PROJETOS (Atualizado com visual padronizado)
         const projects = [
             {
                 title: "Controle de Acesso",
-                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1740&auto=format&fit=crop",
-                description: `Desenvolvi um Windows Service customizado para gerenciar a disponibilidade de usuários no ambiente DocuWare.\n\nO sistema opera com base em janelas temporais configuráveis.`,
+                image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1740&auto=format&fit=crop",
+                description: `Nossa equipe desenvolveu um Windows Service customizado para gerenciar a disponibilidade de usuários no ambiente DocuWare.
+                O sistema opera com base em janelas temporais configuráveis: ele monitora, ativa e desativa usuários automaticamente conforme seus horários permitidos de trabalho. Isso garante que o acesso ao sistema ocorra apenas nos momentos autorizados, aumentando a segurança e o controle operacional.`,
                 tags: ["C#", ".NET 8", "Windows Service", "DocuWare"],
-                isService: true
+                // Configuração do Visual "Service"
+                badge: { text: "Win. Service", icon: "settings" } 
             },
             {
                 title: "Exportador de PDF",
-                image: "https://placehold.co/600x800/333/FFF?text=Exportador+de+PDF",
-                description: `Trabalho colaborativo no desenvolvimento de um sistema que agrega valor ao portólio de produtos.\n\nExtração e conversão de documentos para PDF/A com OCR integrado.`,
-                tags: ["C#", ".NET 8", "Windows Forms"]
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1740&auto=format&fit=crop", // Imagem tecnológica
+                description: `Neste projeto recente, trabalhei colaborativamente no desenvolvimento de um sistema para modernizar o acervo digital. Criamos uma aplicação capaz de extrair, converter e indexar documentos legados.
+                O diferencial técnico da nossa solução foi integrar a conversão para PDF/A e o reconhecimento de texto (OCR) no mesmo fluxo de exportação, entregando os dados já prontos para importação em qualquer sistema moderno, acompanhados de seus respectivos metadados (CSV).`,
+                tags: ["C#", ".NET 8", "Windows Forms"],
+                // Configuração do Visual "Desktop"
+                badge: { text: "Exportador PDF", icon: "monitor" }
             },
             {
                 title: "Pré Check-in",
-                image: "https://placehold.co/600x800/222/FFF?text=Pré+Check-in",
-                description: `Projeto para otimizar o check-in em um hotel de alto padrão.\nViabiliza a coleta antecipada de dados do hóspede.`,
-                tags: ["HTML", "CSS", "JavaScript"]
+                image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1740&auto=format&fit=crop", // Imagem de Hotel/Resort
+                description: `Com o objetivo de elevar a experiência em um hotel de alto padrão em Porto Seguro, criei um sistema que antecipa a coleta de dados do check-in. Isso transformou a chegada do hóspede em um processo fluido, onde apenas a validação documental é necessária, proporcionando muito mais agilidade e eficiência operacional para a recepção.`,
+                tags: ["HTML", "CSS", "JavaScript"],
+                // Configuração do Visual "Web"
+                badge: { text: "Check-in Online", icon: "globe" }
             },
             {
                 title: "Em Breve",
                 image: "https://placehold.co/600x800/000/333?text=Em+Breve",
                 description: "Mais projetos sendo desenvolvidos...",
                 tags: []
+                // Sem badge, fica apenas a imagem
             }
         ];
 
@@ -309,11 +318,26 @@
             const container = document.getElementById('grid-projects');
             container.innerHTML = projects.map((p, idx) => `
                 <div onclick="openModal('projects', ${idx})" class="aspect-square bg-gray-100 dark:bg-gray-800 cursor-pointer relative group overflow-hidden border border-gray-200 dark:border-gray-700">
+                    
                     <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    ${p.isService ? `<div class="absolute inset-0 flex flex-col items-center justify-center bg-black/40 backdrop-blur-sm"><div class="w-10 h-10 rounded-full border border-white/50 flex items-center justify-center mb-1"><i data-lucide="settings" class="w-5 h-5 text-white"></i></div><span class="text-[10px] text-white font-bold uppercase tracking-widest">Service</span></div>` : ''}
-                    ${!p.isService ? '<i data-lucide="layers" class="text-white w-5 h-5 absolute top-2 right-2 drop-shadow-md"></i>' : ''}
+                    
+                    ${p.badge ? `
+                        <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/60 backdrop-blur-[2px] transition-opacity hover:bg-black/50">
+                             
+                             <div class="w-12 h-12 rounded-full border border-white/60 flex items-center justify-center mb-2">
+                                <i data-lucide="${p.badge.icon}" class="w-6 h-6 text-white"></i>
+                             </div>
+                             
+                             <span class="text-[10px] text-white font-bold uppercase tracking-[0.2em]">${p.badge.text}</span>
+                        </div>
+                    ` : ''}
+
+                    ${!p.badge ? '<i data-lucide="layers" class="text-white w-5 h-5 absolute top-2 right-2 drop-shadow-md"></i>' : ''}
                 </div>
             `).join('');
+            
+            // Importante: Recarrega os ícones novos
+            lucide.createIcons();
         }
 
         function renderVideos() {

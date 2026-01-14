@@ -70,9 +70,7 @@
                     <div class="shrink-0 mr-6">
                         <div class="w-24 h-24 rounded-full bg-black dark:bg-gray-800 flex items-center justify-center overflow-hidden border-2 border-gray-100 dark:border-gray-700 p-0.5 relative">
                             <div class="w-full h-full rounded-full bg-black flex items-center justify-center text-white font-bold text-2xl tracking-tighter">LM</div>
-                            <div class="absolute bottom-0 right-0 bg-blue-500 text-white rounded-full w-7 h-7 flex items-center justify-center border-2 border-white dark:border-gray-900 cursor-pointer">
-                                <i data-lucide="plus" class="w-4 h-4"></i>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -228,6 +226,15 @@
         // 1. PROJETOS (Atualizado com visual padronizado)
         const projects = [
             {
+                title: "Repositório Acadêmico",
+                image: "https://images.unsplash.com/photo-1731376593291-4b4dcec3b3b0?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                description: `O Repositório Acadêmico CETMob é uma plataforma open source desenvolvida para centralizar e democratizar o conhecimento do curso de Engenharia de Transportes e Mobilidade (UERGS). Atuando como uma "biblioteca viva", o projeto reúne resumos de disciplinas, formulários técnicos e materiais de apoio em um ambiente estruturado e de fácil navegação, substituindo arquivos dispersos por uma documentação colaborativa que evolui conforme a contribuição dos estudantes.
+
+                Link: https://cetmob.github.io/`,
+                tags: ["MarkDown", "Git", "Github"],
+                badge: { text: "Repo. Acadêmico", icon: "book" } 
+            },
+            {
                 title: "Controle de Acesso",
                 image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1740&auto=format&fit=crop",
                 description: `Nossa equipe desenvolveu um Windows Service customizado para gerenciar a disponibilidade de usuários no ambiente DocuWare.
@@ -267,12 +274,12 @@
 
         const careerItems = [
             {
-                title: "Estagiário de Suporte e Desenvolvimento",
+                title: "Analista de Suporte e Desenvolvimento JR",
                 org: "MGSII",
                 date: "08/2024 - Atualmente",
                 logo: "img/mgsii-logo.jpg",
                 postImage: "img/gestao-mgsii.jpg",
-                desc: "Iniciei atuando exclusivamente no suporte técnico (interno e externo). Com o aprimoramento dos meus conhecimentos, expandi minha atuação e passei a assumir progressivamente demandas de desenvolvimento.",
+                desc: "Iniciei atuando como exclusivamente no suporte técnico (interno e externo). Com o aprimoramento dos meus conhecimentos, expandi minha atuação e passei a assumir progressivamente demandas de desenvolvimento.",
                 linkTitle: "Linkedin", linkUrl: "https://www.linkedin.com/company/mgs-imagem-e-informa-o/posts/?feedView=all"
             },
             {
